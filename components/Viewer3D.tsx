@@ -2,9 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 import type * as T from "three";
 
-// Interactive 3D prototype of PrepLabel (model in /public/models/preplabel.glb, units mm).
+// Interactive 3D prototype of PrepLabel (model in /public/models/preplabel-3d-model.glb, units mm).
 const M = { D: 162, H: 105, HF: 25, SLOPE: 60, ANG: 53.13, PRN_Y: 106.5, PT: 105.2, SCR_S: 0.55, hinge: [0, 106.45, -64.7], slot: [0, 107.7, 10.3] };
-const SCREENS = ["/ui/home.png", "/ui/items.png", "/ui/preview.png", "/ui/printed.png"];
+const SCREENS = ["/ui/preplabel-screen-choose-category.png", "/ui/preplabel-screen-choose-item.png", "/ui/preplabel-screen-label-preview.png", "/ui/preplabel-screen-label-printed.png"];
 const SCREEN_NAMES = ["Home", "Items", "Preview", "Printed"];
 const COLORS = {
   arctic: { body: "#EDEEEA", accent: "#1C1D20", name: "Arctic" },
@@ -65,7 +65,7 @@ export default function Viewer3D() {
 
       const tl = new THREE.TextureLoader();
       const tex = (src: string) => { const t = tl.load(src); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t; };
-      const screenTex = SCREENS.map(tex), labelTex = tex("/ui/label.png");
+      const screenTex = SCREENS.map(tex), labelTex = tex("/ui/preplabel-55x40-food-prep-label.png");
 
       const D = THREE.DoubleSide;
       const mat = {
@@ -89,7 +89,7 @@ export default function Viewer3D() {
             let label: T.Mesh | null = null, led: T.Mesh<T.CylinderGeometry, T.MeshBasicMaterial> | null = null;
 
       try {
-        const gltf = await new GLTFLoader().loadAsync("/models/preplabel.glb");
+        const gltf = await new GLTFLoader().loadAsync("/models/preplabel-3d-model.glb");
         if (disposed) return;
         const meshes: T.Mesh[] = [];
         gltf.scene.updateMatrixWorld(true);

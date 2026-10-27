@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMeta, JsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Privacy", description: "How Plainworks handles personal information." };
+export const metadata: Metadata = pageMeta({ title: "Privacy policy", description: "How Plainworks collects, uses and protects personal information on this website and in its products.", path: "/privacy" });
 
 export default function Privacy() {
   return (

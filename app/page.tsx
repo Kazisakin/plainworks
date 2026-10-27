@@ -3,6 +3,14 @@ import Link from "next/link";
 import Photo from "@/components/Photo";
 import { Split, Rotator, Marquee } from "@/components/Motion";
 import { photos } from "@/lib/photos";
+import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  ...pageMeta({ title: `${site.name} | Technology that helps businesses grow`, description: site.description, path: "/" }),
+  title: { absolute: `${site.name} | Technology that helps businesses grow` },
+};
 
 export default function Home() {
   return (
@@ -10,13 +18,13 @@ export default function Home() {
       {/* 1 · HERO */}
       <section className="hero-dark">
         <div className="hero-bg" data-speed="-0.18" data-scale="1.15">
-          <Image src={photos.earthNight} alt="" fill priority sizes="100vw" quality={82} />
+          <Image src={photos.earthNight} alt="Earth at night from space with glowing city lights" fill priority sizes="100vw" quality={82} />
         </div>
         <div className="hero-shade" />
         <div className="wrap hero-inner">
           <p className="eyebrow eyebrow-inv reveal">Plainworks</p>
           <h1 className="hero-title">
-            <Split as="p" text="Technology that helps" className="hero-line" />
+            <Split as="span" text="Technology that helps" className="hero-line" />
             <span className="hero-line hero-rot">
               businesses <Rotator words={["grow.", "sell more.", "move faster.", "go further."]} />
             </span>
@@ -95,7 +103,7 @@ export default function Home() {
       {/* 5 · FUTURE */}
       <section className="future">
         <div className="future-bg" data-speed="-0.12" data-scale="1.2">
-          <Image src={photos.cityNight} alt="" fill sizes="100vw" quality={75} />
+          <Image src={photos.cityNight} alt="Aerial view of a city at night" fill sizes="100vw" quality={75} />
         </div>
         <div className="future-shade" />
         <div className="wrap future-inner">
@@ -134,7 +142,7 @@ export default function Home() {
           </div>
           <div className="product-img">
             <div className="glow" />
-            <Image src="/renders/hero_sage.webp" alt="PrepLabel label printer in sage" width={1773} height={1711} sizes="(max-width: 960px) 100vw, 600px" />
+            <Image src="/renders/preplabel-food-label-printer-sage.webp" alt="PrepLabel touchscreen food prep label printer in sage green" width={1773} height={1711} sizes="(max-width: 960px) 100vw, 600px" />
           </div>
         </Link>
       </section>

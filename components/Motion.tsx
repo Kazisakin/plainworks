@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 // Headline whose words slide up one by one when it scrolls into view.
-export function Split({ text, as: Tag = "h2", className = "", delay = 0 }: { text: string; as?: "h1" | "h2" | "h3" | "p"; className?: string; delay?: number }) {
+export function Split({ text, as: Tag = "h2", className = "", delay = 0 }: { text: string; as?: "h1" | "h2" | "h3" | "p" | "span"; className?: string; delay?: number }) {
   const words = text.split(" ");
   return (
     <Tag className={`st ${className}`} aria-label={text}>
@@ -27,9 +27,9 @@ export function Rotator({ words, interval = 2200 }: { words: string[]; interval?
   return (
     <span className="rotator" aria-live="polite">
       {words.map((w, j) => (
-        <span key={w} className={j === i ? "on" : j === (i - 1 + words.length) % words.length ? "off" : ""} aria-hidden={j !== i}>{w}</span>
+        <span key={w} className={j === i ? "on" : j === (i - 1 + words.length) % words.length ? "off" : ""} aria-hidden={j !== i}>{w}{" "}</span>
       ))}
-      <span className="sizer" aria-hidden="true">{words.reduce((a, b) => (b.length > a.length ? b : a))}</span>
+      <span className="sizer" aria-hidden="true" data-text={words.reduce((a, b) => (b.length > a.length ? b : a))} />
     </span>
   );
 }

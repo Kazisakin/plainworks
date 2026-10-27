@@ -1,17 +1,24 @@
 import type { Metadata } from "next";
+import { pageMeta, JsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import Photo from "@/components/Photo";
 import { Split, Marquee } from "@/components/Motion";
 import { photos } from "@/lib/photos";
 
-export const metadata: Metadata = { title: "About", description: "Plainworks builds technology that upgrades the systems businesses already run, starting in Canada and growing into emerging markets." };
+export const metadata: Metadata = pageMeta({
+  title: "About Plainworks: business technology for Canada and emerging markets",
+  description: "Plainworks builds simple technology that upgrades the systems businesses already run. Founded in Fredericton, Canada, and building for Bangladesh, South Asia and Africa.",
+  path: "/about",
+  keywords: ["about Plainworks", "business technology company", "Fredericton tech startup", "emerging markets technology", "Bangladesh", "Africa"],
+});
 
 export default function About() {
   return (
     <>
+      <JsonLd data={[breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])]} />
       <section className="page-hero">
-        <div className="bg" data-speed="-0.15" data-scale="1.12"><Image src={photos.team} alt="" fill priority sizes="100vw" quality={78} /></div>
+        <div className="bg" data-speed="-0.15" data-scale="1.12"><Image src={photos.team} alt="Team collaborating around a laptop" fill priority sizes="100vw" quality={78} /></div>
         <div className="shade" />
         <div className="wrap">
           <p className="eyebrow eyebrow-inv reveal">About Plainworks</p>
@@ -51,7 +58,7 @@ export default function About() {
       </section>
 
       <section className="future">
-        <div className="future-bg" data-speed="-0.1" data-scale="1.2"><Image src={photos.network} alt="" fill sizes="100vw" quality={70} /></div>
+        <div className="future-bg" data-speed="-0.1" data-scale="1.2"><Image src={photos.network} alt="Glowing digital network lines" fill sizes="100vw" quality={70} /></div>
         <div className="future-shade" />
         <div className="wrap future-inner">
           <p className="eyebrow eyebrow-inv reveal">Where we&apos;re going</p>

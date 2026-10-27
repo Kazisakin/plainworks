@@ -1,12 +1,17 @@
-// Site settings. On Vercel, set these in Project → Settings → Environment Variables.
-const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-
+// Site settings. On Vercel, these can be overridden in Project → Settings → Environment Variables.
 export const site = {
   name: "Plainworks",
+  legalName: "Plainworks",
   tagline: "Upgrade the systems you already run.",
+  description:
+    "Plainworks builds simple technology that upgrades the systems businesses already run, so they waste less time and sell more. Based in Fredericton, Canada, building for emerging markets.",
   city: "Fredericton, New Brunswick, Canada",
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@example.com",
-  url: process.env.NEXT_PUBLIC_SITE_URL || (vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000"),
+  locality: "Fredericton",
+  region: "NB",
+  country: "CA",
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@plainworks.solutions",
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://plainworks.solutions").replace(/\/$/, ""),
+  linkedin: "",
 };
 
 export const nav = [

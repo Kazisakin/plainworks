@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta, JsonLd, breadcrumbJsonLd, productJsonLd } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import Photo from "@/components/Photo";
@@ -6,10 +7,12 @@ import Viewer from "@/components/ViewerLoader";
 import { Split } from "@/components/Motion";
 import { photos } from "@/lib/photos";
 
-export const metadata: Metadata = {
-  title: "PrepLabel",
-  description: "PrepLabel is an offline touchscreen label printer for restaurant kitchens. Category, item, print.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "PrepLabel: touchscreen food prep label printer for restaurants",
+  description: "PrepLabel prints dated food prep labels in three taps. Made and use-by dates worked out for you, staff initials, a print log for inspections, and no Wi-Fi. 55 x 40 mm labels.",
+  path: "/preplabel",
+  keywords: ["food prep label printer", "restaurant label printer", "kitchen label printer", "food date labels", "use-by labels", "day dot labels", "food safety labels", "PrepLabel"],
+});
 
 const ic = {
   offline: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M2 8.8a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01M3 3l18 18" /></svg>,
@@ -19,15 +22,16 @@ const ic = {
 };
 
 const finishes = [
-  { c: "arctic", name: "Arctic", bg: "#F1F1EE" },
-  { c: "sage", name: "Sage", bg: "#E6EDE4" },
-  { c: "clay", name: "Clay", bg: "#F4E6DD" },
-  { c: "graphite", name: "Graphite", bg: "#E4E4E6" },
+  { c: "arctic", file: "arctic-white", name: "Arctic", bg: "#F1F1EE" },
+  { c: "sage", file: "sage", name: "Sage", bg: "#E6EDE4" },
+  { c: "clay", file: "clay", name: "Clay", bg: "#F4E6DD" },
+  { c: "graphite", file: "graphite", name: "Graphite", bg: "#E4E4E6" },
 ];
 
 export default function PrepLabel() {
   return (
     <>
+      <JsonLd data={[productJsonLd, breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "PrepLabel", path: "/preplabel" }])]} />
       <section className="wrap p-hero">
         <p className="eyebrow reveal">PrepLabel by Plainworks</p>
         <Split as="h1" text="Category. Item. Print." className="p-title" />
@@ -37,7 +41,7 @@ export default function PrepLabel() {
           <a href="#explore" className="btn btn-line">Explore in 3D</a>
         </div>
         <div className="p-hero-img reveal">
-          <Image src="/renders/hero_arctic.webp" alt="PrepLabel printing a chicken breast label" width={1773} height={1711} priority sizes="(max-width: 960px) 100vw, 900px" />
+          <Image src="/renders/preplabel-food-label-printer-arctic-white.webp" alt="PrepLabel food prep label printer in arctic white, printing a chicken breast label" width={1773} height={1711} priority sizes="(max-width: 960px) 100vw, 900px" />
         </div>
         <dl className="facts reveal">
           <div><dt>3</dt><dd>taps</dd></div>
@@ -88,9 +92,9 @@ export default function PrepLabel() {
           <h2 className="reveal">Anyone can use it on day one.</h2>
           <div className="steps">
             {[
-              ["/ui/home.png", "Pick a category", "Home screen with categories"],
-              ["/ui/items.png", "Tap the item", "List of items with shelf life"],
-              ["/ui/preview.png", "Print", "Label preview with print button"],
+              ["/ui/preplabel-screen-choose-category.png", "Pick a category", "PrepLabel touchscreen showing food categories: proteins, sauces, prep veg, bakery"],
+              ["/ui/preplabel-screen-choose-item.png", "Tap the item", "PrepLabel screen listing prep items with their shelf life"],
+              ["/ui/preplabel-screen-label-preview.png", "Print", "PrepLabel label preview screen with made and use-by dates and a print button"],
             ].map(([src, t, alt], i) => (
               <div className="step reveal" key={t}>
                 <div className="screen"><Image src={src} alt={alt} width={360} height={480} /></div>
@@ -100,15 +104,15 @@ export default function PrepLabel() {
             ))}
           </div>
           <div className="closeups">
-            <div className="closeup reveal"><Image src="/renders/detail_screen.webp" alt="Close-up of the PrepLabel touchscreen" fill sizes="(max-width: 960px) 100vw, 600px" /><span>Works with gloves</span></div>
-            <div className="closeup reveal"><Image src="/renders/detail_label.webp" alt="Close-up of a label coming out of the printer" fill sizes="(max-width: 960px) 100vw, 600px" /><span>Peels off the front</span></div>
+            <div className="closeup reveal"><Image src="/renders/preplabel-touchscreen-close-up.webp" alt="Close-up of the PrepLabel glove-friendly touchscreen" fill sizes="(max-width: 960px) 100vw, 600px" /><span>Works with gloves</span></div>
+            <div className="closeup reveal"><Image src="/renders/preplabel-printed-prep-label-close-up.webp" alt="Close-up of a printed food prep label coming out of PrepLabel" fill sizes="(max-width: 960px) 100vw, 600px" /><span>Peels off the front</span></div>
           </div>
         </div>
       </section>
 
       <section className="section wrap split">
         <div className="label-stage reveal">
-          <Image src="/ui/label.png" alt="55 by 40 mm prep label" width={660} height={480} />
+          <Image src="/ui/preplabel-55x40-food-prep-label.png" alt="55 x 40 mm food prep label showing item, made date, use-by date, staff initials and QR code" width={660} height={480} />
         </div>
         <div className="reveal">
           <p className="eyebrow">The label</p>
@@ -153,7 +157,7 @@ export default function PrepLabel() {
       <section className="section mist">
         <div className="wrap split">
           <div className="reveal">
-            <Image src="/renders/lid_open.webp" alt="PrepLabel with lid open showing the label roll" width={1800} height={1664} sizes="(max-width: 960px) 100vw, 560px" />
+            <Image src="/renders/preplabel-label-roll-change-lid-open.webp" alt="PrepLabel with the lid open, showing how to change the label roll" width={1800} height={1664} sizes="(max-width: 960px) 100vw, 560px" />
           </div>
           <div className="reveal">
             <p className="eyebrow">Roll change</p>
@@ -176,7 +180,7 @@ export default function PrepLabel() {
         <div className="finishes">
           {finishes.map((f) => (
             <div className="finish reveal tilt" key={f.c} style={{ background: f.bg }}>
-              <Image src={`/renders/hero_${f.c}.webp`} alt={`PrepLabel in ${f.name}`} width={1773} height={1711} sizes="(max-width: 960px) 50vw, 300px" />
+              <Image src={`/renders/preplabel-food-label-printer-${f.file}.webp`} alt={`PrepLabel food label printer in ${f.name.toLowerCase()}`} width={1773} height={1711} sizes="(max-width: 960px) 50vw, 300px" />
               {f.name}
             </div>
           ))}
@@ -188,7 +192,7 @@ export default function PrepLabel() {
           <div className="reveal">
             <p className="eyebrow">Specs</p>
             <h2>The details.</h2>
-            <Image src="/renders/rear.webp" alt="Back of PrepLabel with USB-C, power and switch" width={1800} height={1472} sizes="(max-width: 960px) 100vw, 560px" style={{ marginTop: 32 }} />
+            <Image src="/renders/preplabel-rear-usb-c-power-ports.webp" alt="Back of PrepLabel with USB-C setup port, 12 V power input and on/off switch" width={1800} height={1472} sizes="(max-width: 960px) 100vw, 560px" style={{ marginTop: 32 }} />
           </div>
           <table className="spec reveal">
             <tbody>
