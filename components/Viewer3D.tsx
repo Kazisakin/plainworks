@@ -214,7 +214,7 @@ export default function Viewer3D() {
       <div className="viewer" ref={box}>
         {!ready && !failed && <div className="viewer-loading">Loading 3D model…</div>}
         {failed && <div className="viewer-loading">The 3D view couldn&apos;t start in this browser.</div>}
-        {ready && <div className="viewer-status"><span className="dot" />{status}</div>}
+        {ready && <div className="viewer-status">{status}</div>}
         {ready && <div className="viewer-hint">Drag to turn · scroll to zoom · tap the screen</div>}
       </div>
       <div className="viewer-bar">

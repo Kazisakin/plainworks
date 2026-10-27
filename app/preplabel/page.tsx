@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Photo from "@/components/Photo";
 import Viewer from "@/components/ViewerLoader";
+import { Split } from "@/components/Motion";
 import { photos } from "@/lib/photos";
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ export default function PrepLabel() {
     <>
       <section className="wrap p-hero">
         <p className="eyebrow reveal">PrepLabel by Plainworks</p>
-        <h1 className="reveal">Category. Item. Print.</h1>
+        <Split as="h1" text="Category. Item. Print." className="p-title" />
         <p className="lead reveal">A dated prep label in about two seconds. No handwriting, no Wi-Fi.</p>
         <div className="row reveal" style={{ justifyContent: "center" }}>
           <Link href="/contact?topic=pilot" className="btn btn-dark">Join the pilot</Link>
@@ -110,10 +111,10 @@ export default function PrepLabel() {
         <p className="eyebrow reveal">Features</p>
         <h2 className="reveal" style={{ maxWidth: "13em" }}>Simple on the line. Strict where it counts.</h2>
         <div className="features">
-          <div className="feature reveal" style={{ background: "#E9F1EA" }}><span className="icon">{ic.offline}</span><div><h3>Offline</h3><p>No Wi-Fi, Bluetooth or cloud.</p></div></div>
-          <div className="feature reveal" style={{ background: "#F4ECE3" }}><span className="icon">{ic.lock}</span><div><h3>Locked template</h3><p>Every label looks the same.</p></div></div>
-          <div className="feature reveal" style={{ background: "#E8EEF4" }}><span className="icon">{ic.usb}</span><div><h3>USB setup</h3><p>Edit items from your laptop.</p></div></div>
-          <div className="feature reveal" style={{ background: "#F3EEDF" }}><span className="icon">{ic.log}</span><div><h3>Print log</h3><p>Export every label to a sheet.</p></div></div>
+          <div className="feature reveal tilt" style={{ background: "#E9F1EA" }}><span className="icon">{ic.offline}</span><div><h3>Offline</h3><p>No Wi-Fi, Bluetooth or cloud.</p></div></div>
+          <div className="feature reveal tilt" style={{ background: "#F4ECE3" }}><span className="icon">{ic.lock}</span><div><h3>Locked template</h3><p>Every label looks the same.</p></div></div>
+          <div className="feature reveal tilt" style={{ background: "#E8EEF4" }}><span className="icon">{ic.usb}</span><div><h3>USB setup</h3><p>Edit items from your laptop.</p></div></div>
+          <div className="feature reveal tilt" style={{ background: "#F3EEDF" }}><span className="icon">{ic.log}</span><div><h3>Print log</h3><p>Export every label to a sheet.</p></div></div>
         </div>
       </section>
 
@@ -142,7 +143,7 @@ export default function PrepLabel() {
         </div>
         <div className="finishes">
           {finishes.map((f) => (
-            <div className="finish reveal" key={f.c} style={{ background: f.bg }}>
+            <div className="finish reveal tilt" key={f.c} style={{ background: f.bg }}>
               <Image src={`/renders/hero_${f.c}.webp`} alt={`PrepLabel in ${f.name}`} width={1773} height={1711} sizes="(max-width: 960px) 50vw, 300px" />
               {f.name}
             </div>
