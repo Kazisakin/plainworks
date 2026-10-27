@@ -125,7 +125,11 @@ export default function Home() {
           <div className="product-copy">
             <p className="eyebrow">Our first product</p>
             <h2>PrepLabel</h2>
-            <p className="lead">A touchscreen label printer for restaurant kitchens. Category, item, print.</p>
+            <p className="lead">A touchscreen label printer for restaurant kitchens.</p>
+            <dl className="mini-ps">
+              <div><dt>Problem</dt><dd>Hand-written labels: smudged, wrong dates, no record for inspectors.</dd></div>
+              <div><dt>Solution</dt><dd>Three taps print a clear, dated label and log it automatically.</dd></div>
+            </dl>
             <span className="btn btn-dark" style={{ marginTop: 28 }}>See PrepLabel <span className="arrow">→</span></span>
           </div>
           <div className="product-img">

@@ -50,6 +50,38 @@ export default function PrepLabel() {
         <Photo src={photos.hands} alt="Cook slicing vegetables at a prep station" caption="Prep it. Label it. Move on." shape="wide" priority />
       </section>
 
+      <section className="section wrap" id="why">
+        <div className="center" style={{ marginBottom: 56 }}>
+          <p className="eyebrow reveal">The problem → the solution</p>
+          <Split text="Hand-written labels cost kitchens time, food and inspections." className="ps-title" />
+        </div>
+        <div className="ps">
+          <div className="ps-card ps-problem reveal">
+            <span className="ps-tag">Today</span>
+            <h3>Tape, a marker and guesswork</h3>
+            <ul>
+              <li><b>Unreadable.</b> Smudged ink and rushed writing in the walk-in.</li>
+              <li><b>Wrong dates.</b> Use-by worked out in someone&apos;s head at the end of a shift.</li>
+              <li><b>No record.</b> When an inspector asks who prepped it and when, there&apos;s no answer.</li>
+              <li><b>Waste.</b> When nobody trusts the label, good food gets thrown out.</li>
+              <li><b>Slow.</b> Writing labels by hand eats prep time every day.</li>
+            </ul>
+          </div>
+          <div className="ps-arrow reveal" aria-hidden="true">→</div>
+          <div className="ps-card ps-solution reveal">
+            <span className="ps-tag">With PrepLabel</span>
+            <h3>Three taps, a perfect label</h3>
+            <ul>
+              <li><b>Always clear.</b> Printed, same layout every time.</li>
+              <li><b>Right dates.</b> Use-by is calculated from each item&apos;s shelf life.</li>
+              <li><b>Full record.</b> Every label is logged with item, time and staff initials.</li>
+              <li><b>Less waste.</b> Staff trust the date, so food is used, not binned.</li>
+              <li><b>About 2 seconds.</b> Category, item, print. Back to cooking.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section className="section mist">
         <div className="wrap">
           <p className="eyebrow reveal">How it works</p>
