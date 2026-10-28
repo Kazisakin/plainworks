@@ -2,15 +2,20 @@
 export const site = {
   name: "Plainworks",
   legalName: "Plainworks",
-  tagline: "Upgrade the systems you already run.",
+  tagline: "Products that make businesses run better.",
+  homeTitle: "Plainworks | AI software and smart hardware for business",
   description:
-    "Plainworks builds simple technology that upgrades the systems businesses already run, so they waste less time and sell more. Based in Fredericton, Canada, building for emerging markets.",
+    "Plainworks is a product studio in Fredericton, Canada, building AI software and smart hardware that take slow, costly work out of running a business.",
   city: "Fredericton, New Brunswick, Canada",
   locality: "Fredericton",
   region: "NB",
   country: "CA",
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@plainworks.solutions",
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://plainworks.solutions").replace(/\/$/, ""),
+  url: (
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`) ||
+    "https://plainworks.solutions"
+  ).replace(/\/$/, ""),
   linkedin: "",
 };
 

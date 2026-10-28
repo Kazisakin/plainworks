@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { pageMeta, JsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import Photo from "@/components/Photo";
+import Team from "@/components/Team";
 import { Split, Marquee } from "@/components/Motion";
 import { photos } from "@/lib/photos";
+import { roadmap } from "@/lib/content";
+import { pageMeta, JsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "About Plainworks: business technology for Canada and emerging markets",
-  description: "Plainworks builds simple technology that upgrades the systems businesses already run. Founded in Fredericton, Canada, and building for Bangladesh, South Asia and Africa.",
+  title: "About us: a product studio in Fredericton, Canada",
+  description: "Meet Plainworks, a four-person product studio in Fredericton, Canada, building AI software and smart hardware that help businesses run better.",
   path: "/about",
-  keywords: ["about Plainworks", "business technology company", "Fredericton tech startup", "emerging markets technology", "Bangladesh", "Africa"],
+  keywords: ["about Plainworks", "product studio", "AI startup Canada", "Fredericton startup", "business automation", "logistics technology"],
 });
 
 export default function About() {
@@ -22,31 +24,32 @@ export default function About() {
         <div className="shade" />
         <div className="wrap">
           <p className="eyebrow eyebrow-inv reveal">About Plainworks</p>
-          <Split as="h1" text="Better, not different." className="on-dark" />
-          <p className="hero-lead reveal" style={{ transitionDelay: ".3s" }}>Most businesses don&apos;t need a new system. They need the one they have to work better. That&apos;s what we build.</p>
+          <Split as="h1" text="We solve problems for a living." className="on-dark" />
+          <p className="hero-lead reveal" style={{ transitionDelay: ".3s" }}>Plainworks is a product studio. We find what slows businesses down and build the product that fixes it.</p>
         </div>
       </section>
 
-      <Marquee items={["Listen first", "Fix the slowest step", "Plain language", "Works offline", "Built to last"]} />
+      <Marquee items={["Find the problem", "Prove it fast", "Pilot with real users", "Scale it"]} />
 
       <section className="section wrap split-grid">
         <div>
-          <p className="eyebrow reveal">Our mission</p>
-          <Split text="Make good technology simple enough for every business." />
-          <p className="lead reveal">Big software is built for big companies. We build small, focused tools for everyone else: tools that fit how a business already runs and pay for themselves fast.</p>
+          <p className="eyebrow reveal">Our story</p>
+          <Split text="It started with problems we kept running into." />
+          <p className="lead reveal">Between jobs, classes and side projects, the four of us kept seeing the same thing: businesses losing hours to paperwork, manual tracking and tools that don&apos;t talk to each other.</p>
+          <p className="lead reveal">So we started fixing them, one problem at a time. Plainworks is how we turn those fixes into real products, using AI where it helps and hardware where it&apos;s needed.</p>
         </div>
-        <Photo src={photos.monitors} alt="Developer working across several monitors" shape="tall" speed={0.08} />
+        <Photo src={photos.monitors} alt="Engineer prototyping across several monitors" shape="tall" speed={0.08} />
       </section>
 
       <section className="section mist">
         <div className="wrap">
           <p className="eyebrow reveal">What we believe</p>
-          <Split text="Three rules for everything we make." />
+          <Split text="Three rules for everything we build." />
           <div className="values" style={{ marginTop: 56 }}>
             {[
-              { src: photos.analytics, alt: "Laptop showing simple analytics", t: "Upgrade, don't replace", d: "Keep what works. Improve the step that slows you down." },
-              { src: photos.prototype, alt: "Engineer testing hardware", t: "Plain to use", d: "If it needs a manual, we haven't finished designing it." },
-              { src: photos.circuit, alt: "Close-up of a circuit board", t: "Built to last", d: "Solid parts, honest pricing, and data that stays yours." },
+              { src: photos.analytics, alt: "Laptop showing simple analytics", t: "Solve a real problem", d: "If we can't point to the hours, money or mistakes it saves, we don't build it." },
+              { src: photos.prototype, alt: "Engineer testing hardware", t: "Keep it simple", d: "The best tool is the one people use on day one, without training." },
+              { src: photos.circuit, alt: "Close-up of a circuit board", t: "Build to last", d: "Reliable parts, honest pricing, and data that stays with its owner." },
             ].map((v, i) => (
               <article className="value reveal tilt" key={v.t} style={{ transitionDelay: `${i * 0.1}s` }}>
                 <Photo src={v.src} alt={v.alt} shape="free" speed={0.04} />
@@ -57,33 +60,38 @@ export default function About() {
         </div>
       </section>
 
-      <section className="future">
-        <div className="future-bg" data-speed="-0.1" data-scale="1.2"><Image src={photos.network} alt="Glowing digital network lines" fill sizes="100vw" quality={70} /></div>
-        <div className="future-shade" />
-        <div className="wrap future-inner">
-          <p className="eyebrow eyebrow-inv reveal">Where we&apos;re going</p>
-          <Split text="From Canada to the world's fastest-growing markets." className="on-dark future-title" />
-          <p className="hero-lead reveal">We&apos;re starting at home and building toward Bangladesh, South Asia and Africa, where millions of small businesses are ready to grow with the right tools.</p>
-          <div className="regions">
-            {[
-              { src: photos.dhaka, name: "Bangladesh", alt: "Aerial view of Dhaka" },
-              { src: photos.phones, name: "Mobile-first", alt: "Two people using phones for payments" },
-              { src: photos.lagos, name: "West Africa", alt: "Busy street in Lagos" },
-              { src: photos.nairobi, name: "East Africa", alt: "Nairobi skyline" },
-            ].map((r, i) => (
-              <figure className="region clip" key={r.name} style={{ transitionDelay: `${i * 0.08}s` }}>
-                <Image src={r.src} alt={r.alt} fill sizes="(max-width: 960px) 50vw, 300px" quality={78} />
-                <figcaption>{r.name}</figcaption>
-              </figure>
-            ))}
+      <section className="section wrap" id="team">
+        <div className="team-head">
+          <div>
+            <p className="eyebrow reveal">The team</p>
+            <Split text="The people behind Plainworks." />
           </div>
+          <p className="lead reveal">Operations, design and engineering in one small team, so ideas move from sketch to prototype quickly.</p>
+        </div>
+        <Team />
+      </section>
+
+      <section className="section dark">
+        <div className="wrap">
+          <p className="eyebrow eyebrow-inv reveal">Roadmap</p>
+          <Split text="Where we're going." className="on-dark" />
+          <ol className="roadmap">
+            {roadmap.map((r, i) => (
+              <li className="reveal" key={r.title} style={{ transitionDelay: `${i * 0.1}s` }}>
+                <span className="when">{r.when}</span>
+                <h3>{r.title}</h3>
+                <p>{r.text}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
       <section className="section wrap center">
-        <Split text="Let's build what's next." />
+        <Split text="Let's build what's next, together." />
+        <p className="lead reveal" style={{ margin: "18px auto 0" }}>We&apos;re open to investors, manufacturing partners and businesses who want to pilot our products.</p>
         <div className="row reveal" style={{ justifyContent: "center" }}>
-          <Link href="/contact" className="btn btn-dark">Get in touch</Link>
+          <Link href="/contact?topic=invest" className="btn btn-dark">Get in touch</Link>
           <Link href="/preplabel" className="btn btn-line">See PrepLabel</Link>
         </div>
       </section>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { pageMeta, JsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({ title: "Terms of use", description: "Terms of use for the Plainworks website and product information.", path: "/terms" });

@@ -8,8 +8,8 @@ import { Split } from "@/components/Motion";
 import { photos } from "@/lib/photos";
 
 export const metadata: Metadata = pageMeta({
-  title: "PrepLabel: touchscreen food prep label printer for restaurants",
-  description: "PrepLabel prints dated food prep labels in three taps. Made and use-by dates worked out for you, staff initials, a print log for inspections, and no Wi-Fi. 55 x 40 mm labels.",
+  title: "PrepLabel: food prep label printer for kitchens",
+  description: "PrepLabel prints dated food prep labels in three taps, with made and use-by dates, staff initials and an inspection-ready print log. Fully offline.",
   path: "/preplabel",
   keywords: ["food prep label printer", "restaurant label printer", "kitchen label printer", "food date labels", "use-by labels", "day dot labels", "food safety labels", "PrepLabel"],
 });

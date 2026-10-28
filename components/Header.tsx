@@ -18,7 +18,7 @@ export default function Header() {
               {n.label}
             </Link>
           ))}
-          <Link href="/contact?topic=pilot" className="btn btn-dark btn-sm hide-sm">Join the pilot</Link>
+          <Link href="/contact?topic=invest" className="btn btn-dark btn-sm hide-sm">Work with us</Link>
         </nav>
       </div>
     </header>

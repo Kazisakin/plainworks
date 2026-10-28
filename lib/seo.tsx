@@ -26,9 +26,18 @@ export const orgJsonLd = {
   logo: `${site.url}/logo.png`,
   description: site.description,
   ...(site.email.includes("example.com") ? {} : { email: site.email }),
+  ...(site.linkedin ? { sameAs: [site.linkedin] } : {}),
   address: { "@type": "PostalAddress", addressLocality: site.locality, addressRegion: site.region, addressCountry: site.country },
   areaServed: ["Canada", "Bangladesh", "South Asia", "Africa"],
-  knowsAbout: ["business software", "restaurant technology", "food prep labeling", "point of sale upgrades", "emerging markets"],
+  founder: { "@type": "Person", name: "Kazi Mostofa Sakin", jobTitle: "Chief Executive Officer" },
+  employee: [
+    { "@type": "Person", name: "Kazi Mostofa Sakin", jobTitle: "Chief Executive Officer" },
+    { "@type": "Person", name: "Asfakur Rahman", jobTitle: "Head of Administration" },
+    { "@type": "Person", name: "Asiqur Rahman Asif", jobTitle: "Product Designer" },
+    { "@type": "Person", name: "Saiful Islam Oni", jobTitle: "Product Engineer" },
+  ],
+  numberOfEmployees: { "@type": "QuantitativeValue", value: 4 },
+  knowsAbout: ["artificial intelligence", "business automation", "logistics technology", "smart hardware", "food prep labeling", "consumer products", "emerging markets"],
 };
 
 export const websiteJsonLd = {

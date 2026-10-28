@@ -31,9 +31,11 @@ export default function Viewer3D() {
     const el = box.current!;
     let cleanup = () => {};
     (async () => {
-      const THREE = await import("three");
-      const { OrbitControls } = await import("three/examples/jsm/controls/OrbitControls.js");
-      const { GLTFLoader } = await import("three/examples/jsm/loaders/GLTFLoader.js");
+      const [THREE, { OrbitControls }, { GLTFLoader }] = await Promise.all([
+        import("three"),
+        import("three/addons/controls/OrbitControls.js"),
+        import("three/addons/loaders/GLTFLoader.js"),
+      ]);
       if (disposed) return;
       const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -43,7 +45,7 @@ export default function Viewer3D() {
       renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
       renderer.outputColorSpace = THREE.SRGBColorSpace;
       renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.0;
-      renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFShadowMap;
       el.prepend(renderer.domElement);
 
       const scene = new THREE.Scene();

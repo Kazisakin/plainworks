@@ -22,24 +22,24 @@ export const viewport: Viewport = { themeColor: "#0d0e10", width: "device-width"
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: `${site.name} | Technology that helps businesses grow`, template: `%s | ${site.name}` },
+  title: { default: site.homeTitle, template: `%s | ${site.name}` },
   description: site.description,
   applicationName: site.name,
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   publisher: site.name,
   category: "technology",
-  keywords: ["Plainworks", "business technology", "small business software", "restaurant technology", "PrepLabel", "food prep label printer", "emerging markets", "Bangladesh", "Africa", "Fredericton", "Canada"],
+  keywords: ["Plainworks", "product studio", "AI automation", "business technology", "logistics technology", "smart hardware", "PrepLabel", "food prep label printer", "emerging markets", "Fredericton", "Canada"],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: site.name,
     locale: "en_CA",
     url: site.url,
-    title: `${site.name} | Technology that helps businesses grow`,
+    title: site.homeTitle,
     description: site.description,
   },
-  twitter: { card: "summary_large_image", title: `${site.name} | Technology that helps businesses grow`, description: site.description },
+  twitter: { card: "summary_large_image", title: site.homeTitle, description: site.description },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
   formatDetection: { telephone: false, email: false, address: false },
   ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }),
@@ -47,8 +47,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-CA" className={manrope.variable}>
-      <body>
+    <html lang="en-CA" className={manrope.variable} data-scroll-behavior="smooth">
+      {/* suppressHydrationWarning: browser extensions (e.g. Grammarly) add attributes to <body> before React loads */}
+      <body suppressHydrationWarning>
         <JsonLd data={[orgJsonLd, websiteJsonLd]} />
         <Header />
         <main id="main">{children}</main>

@@ -1,16 +1,23 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
-import { photos } from "@/lib/photos";
 
 const u = (p: string) => `${site.url}${p}`;
-const clean = (src: string) => src.replace(/&/g, "&amp;");
+
+// Bump these when a page's content meaningfully changes. A fixed date tells
+// search engines the truth; `new Date()` claims every page changed on every crawl.
+const updated = {
+  home: new Date("2026-10-28"),
+  preplabel: new Date("2026-10-28"),
+  about: new Date("2026-10-28"),
+  contact: new Date("2026-10-27"),
+  legal: new Date("2026-10-27"),
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   return [
-    { url: u("/"), lastModified: now, changeFrequency: "weekly", priority: 1,
-      images: [u("/renders/preplabel-food-label-printer-sage.webp"), clean(photos.earthNight), clean(photos.dhaka), clean(photos.lagos), clean(photos.nairobi)] },
-    { url: u("/preplabel"), lastModified: now, changeFrequency: "weekly", priority: 0.9,
+    { url: u("/"), lastModified: updated.home, changeFrequency: "weekly", priority: 1,
+      images: [u("/renders/preplabel-food-label-printer-sage.webp")] },
+    { url: u("/preplabel"), lastModified: updated.preplabel, changeFrequency: "weekly", priority: 0.9,
       images: [
         u("/renders/preplabel-food-label-printer-arctic-white.webp"),
         u("/renders/preplabel-food-label-printer-sage.webp"),
@@ -23,9 +30,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         u("/ui/preplabel-55x40-food-prep-label.png"),
         u("/ui/preplabel-screen-choose-category.png"),
       ] },
-    { url: u("/about"), lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: u("/contact"), lastModified: now, changeFrequency: "yearly", priority: 0.6 },
-    { url: u("/privacy"), lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: u("/terms"), lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: u("/about"), lastModified: updated.about, changeFrequency: "monthly", priority: 0.7 },
+    { url: u("/contact"), lastModified: updated.contact, changeFrequency: "yearly", priority: 0.6 },
+    { url: u("/privacy"), lastModified: updated.legal, changeFrequency: "yearly", priority: 0.3 },
+    { url: u("/terms"), lastModified: updated.legal, changeFrequency: "yearly", priority: 0.3 },
   ];
 }
